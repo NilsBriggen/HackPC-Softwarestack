@@ -1,4 +1,3 @@
-# sourcery skip: avoid-builtin-shadow
 from code import Translate
 from file_parser import Parser
 from symbolTable import Table
