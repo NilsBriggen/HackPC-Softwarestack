@@ -32,10 +32,7 @@ class Parser:
         self.originalFile = originalFile
 
     def hasMoreLines(self):
-        if self.linePointer >= len(self.file):
-            return False
-        else:
-            return True
+        return self.linePointer < len(self.file)
 
     def advance(self):
         self.linePointer += 1
@@ -50,12 +47,11 @@ class Parser:
 
     def symbol(self):
         line = self.file[self.linePointer]
-        if line.startswith("("):
-            line = line.replace("(", "").replace(")", "")
-            return line
-        else:
-            line = line.replace("@", "")
-            return line
+        return (
+            line.replace("(", "").replace(")", "")
+            if line.startswith("(")
+            else line.replace("@", "")
+        )
 
     def dest(self):
         try:

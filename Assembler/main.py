@@ -1,8 +1,8 @@
 # sourcery skip: avoid-builtin-shadow
-from asm_code import Translate
-from asm_parser import Parser
-from asm_symbolTable import Table
-from asm_hex import convert
+from code import Translate
+from file_parser import Parser
+from symbolTable import Table
+from hex import convert
 
 # Opening Files
 filePathInput = input("Path to source .asm file: ")
