@@ -1,5 +1,5 @@
 escape_characters = ["\n", "\t", "\r", "\v", "\f", "\b", "\a", "\0", "'", '"', "\\"]
-arithmetic_commands = ["ADD", "SUB", "NEG", "EQ", "GT", "LT", "AND", "OR", "NOT"]
+arithmetic_commands = ["add", "sub", "neg", "eq", "gt", "lt", "and", "or", "not"]
 
 class Parser:
     def __init__(self):
@@ -16,12 +16,8 @@ class Parser:
             line = line.replace("\n", "")
             if line.startswith("//"):
                 line = ""
-            if line.startswith("@") == False:
-                line = line.upper()
             if "//" in line:
                 line = line.split("//")[0]
-            if "KEYBOARD" in line:
-                line = line.replace("KEYBOARD", "KBD")
             for escapeChar in escape_characters:
                 line = line.replace(escapeChar, "")
 
@@ -30,9 +26,8 @@ class Parser:
         file = [x for x in file if x]
         self.file = file
         self.originalFile = originalFile
-
-    def advance(self):
-        self.linePointer += 1
+    
+    def hasMoreLines(self):
         return self.linePointer < len(self.file)
     
     def advance(self):

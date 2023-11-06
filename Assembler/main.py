@@ -1,4 +1,4 @@
-from code import Translate
+from codeTable import Translate
 from file_parser import Parser
 from symbolTable import Table
 from hex import convert
@@ -34,7 +34,7 @@ parser.constructor(filePathInput)
 while parser.hasMoreLines():
     category = parser.instructionType()
     if category == "L" and not table.contains(parser.symbol()):
-        table.addEntry(parser.symbol(), parser.linePointer + 1)
+        table.addEntry(parser.symbol(), None)
     parser.advance()
 
 parser.linePointer = 0
@@ -82,5 +82,7 @@ with open(filePathOutput, "r") as bin:
     hex.write(convert(bin))
 
 hex.close()
+
+print(table.symbolTable)
 
 print("File converted!")
